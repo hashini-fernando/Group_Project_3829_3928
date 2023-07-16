@@ -1,0 +1,48 @@
+﻿<Application x:Class="Final_Group_Project.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Final_Group_Project"
+             StartupUri="View/LoginWindow.xaml">
+    
+    <Application.Resources>
+        <Style x:Key="MButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="TextBlock.HorizontalAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Margin" Value="15 3"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Black"/>
+                    <Setter Property="Foreground" Value="AliceBlue"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+         <!--menu button-->
+        <Style x:Key="MButtonIcon" TargetType="Icon:PackIconMaterial">
+            <Setter Property="Width" Value="15" />
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Foreground" Value="Wheat"/>
+        </Style>
+         <!--button-->
+        <Style x:Key="button" TargetType="Button">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0,0,0,0.5"/>
+
+        </Style>
+
+    </Application.Resources>
+</Application>

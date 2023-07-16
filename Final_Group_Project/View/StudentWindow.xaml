@@ -1,0 +1,129 @@
+﻿<Window x:Class="Final_Group_Project.View.StudentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:Final_Group_Project.ViewModel"
+        mc:Ignorable="d"
+        Title="StudentWindow" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#ffB0CADE"
+        >
+
+    <Window.DataContext>
+        <local:StudentWindowVM/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Light" 
+                                         PrimaryColor="Teal" 
+                                         SecondaryColor="Lime"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        
+        
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Left Menu-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="1" Background="Black" CornerRadius="50 0 30 0">
+            <DockPanel>
+                <!--Menu Logo-->
+                <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100"
+                        DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 30 0 0">
+                    <Ellipse Margin="1,0,-1,0">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/Image/student.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Border>
+
+                <!--Menu Titles-->
+                <TextBlock Text="Student Records" Foreground="White" FontSize="20" FontWeight="SemiBold"
+                           DockPanel.Dock="Top" TextAlignment="Center" Margin="5 15 0 10"/>
+
+                <!--Menu Seprator-->
+                <Separator Margin="25 10 25 10" DockPanel.Dock="Top" Height="0.8" Background="#7e5fdc"/>
+
+                <!--Menu Buttons-->
+                <StackPanel DockPanel.Dock="Top">
+
+                    <Button Style="{StaticResource MButton}" Command="{Binding AddStudentCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="NewBox" Style="{StaticResource MButtonIcon}"/>
+                            <TextBlock Text="Add Students"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource MButton}" Command="{Binding EditStudentCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="AccountEdit" Style="{StaticResource MButtonIcon}"/>
+                            <TextBlock Text="Edit Students"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource MButton}" Command="{Binding DeleteCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource MButtonIcon}"/>
+                            <TextBlock Text="Deleted Students"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource MButton}" Command="{Binding AddModuleCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Book" Style="{StaticResource MButtonIcon}"/>
+                            <TextBlock Text="Register Module"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource MButton}" Command="{Binding AddGradeCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Cup" Style="{StaticResource MButtonIcon}"/>
+                            <TextBlock Text="Module Grade"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource MButton}" Command="{Binding ShowResultCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Receipt" Style="{StaticResource MButtonIcon}"/>
+                            <TextBlock Text="Results"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+
+            </DockPanel>
+
+        </Border>
+
+        <ListView Background="#ffB0CADE" Grid.Column="1" Grid.Row="1" Grid.RowSpan="10" Grid.ColumnSpan="10" ItemsSource="{Binding ListofStudent, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedItem="{Binding SelectedStudent}" SelectionChanged="ListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Reg.No" DisplayMemberBinding="{Binding Reg_No}"/>
+                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding First_Name}"/>
+                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding Last_Name}"/>
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}"/>
+                        <GridViewColumn Header="Telephone.No" DisplayMemberBinding="{Binding Tel_No}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
